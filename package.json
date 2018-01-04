@@ -2,7 +2,15 @@
   "name": "node-pipeline-plugin",
   "version": "0.0.1",
   "description": "Node Pipeline Plugin",
-  "main": "./bin/nStack",
+  "bin": {
+    "nStack": "bin/nStack"
+  },
+  "files": [
+    "bin",
+    "data",
+    "lib",
+    "index.js"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
