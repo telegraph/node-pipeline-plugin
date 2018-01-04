@@ -1,0 +1,22 @@
+[
+    {
+        "ParameterKey"  : "ApplicationName",
+        "ParameterValue": "fake"
+    },
+    {
+        "ParameterKey"  : "DeploymentEnv",
+        "ParameterValue": "preprod"
+    },
+    {
+        "ParameterKey"  : "CloudFormationBucket",
+        "ParameterValue": "artifacts-repo"
+    },
+    {
+        "ParameterKey"  : "CloudFormationKey",
+        "ParameterValue": "fake"
+    },
+    {
+        "ParameterKey"  : "CloudFormationCommonKey",
+        "ParameterValue": "common/latest"
+    }
+]

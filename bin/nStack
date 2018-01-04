@@ -1,0 +1,67 @@
+#!/usr/bin/env node
+
+const ArgumentParser    = require('argparse').ArgumentParser;
+const AppCliDescription = require('../data/cli');
+const PipelineIndex     = require('../index');
+
+function buildCliParser(appConfig){
+    /**
+     *
+     * @param config {{arguments?:object}}
+     * @param parser
+     */
+    function addParameters(config, parser){
+        if( !config.arguments || config.arguments.length === 0 ){
+            return;
+        }
+
+        config.arguments.forEach( arg => {
+            parser.addArgument([arg.name], arg.config);
+        })
+    }
+
+    /**
+     *
+     * @param config {{subCommands?:{usage?:Array<String>}}}
+     * @param parentParser
+     */
+    function addSubParser(config, parentParser){
+        if( !config.subCommands ) {
+            return
+        }
+        let parser = parentParser.addSubparsers(config.subCommands);
+        config.subCommands.commands
+            .map( subCmd => {
+                if( subCmd.config.usage instanceof Array ){
+                    subCmd.config.usage = subCmd.config.usage.join("\n");
+                }
+                return subCmd;
+            })
+            .forEach( subCmd => {
+                let subParser = parser.addParser(subCmd.name, subCmd.config);
+                addParameters(subCmd, subParser);
+                addSubParser (subCmd, subParser);
+            });
+    }
+
+    if( appConfig.usage instanceof Array ){
+        appConfig.usage = appConfig.usage.join("\n");
+    }
+
+    let parser = new ArgumentParser(appConfig);
+    addSubParser (appConfig, parser);
+    addParameters(appConfig, parser);
+    return parser;
+}
+
+let parser = buildCliParser(AppCliDescription);
+let context = parser.parseArgs();
+
+switch (context.command) {
+    case 'help':
+        parser.printHelp();
+        process.exit(0);
+        break;
+    default:
+        PipelineIndex.exec(context);
+}

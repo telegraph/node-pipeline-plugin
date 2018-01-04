@@ -1,0 +1,51 @@
+{
+    "AWSTemplateFormatVersion" : "2010-09-09",
+    "Description": "AWS CloudFormation to launch a service.",
+    "Parameters" : {
+        "ApplicationName": {
+            "Description": "The application name",
+            "Type": "String"
+        },
+        "DeploymentEnv": {
+            "Description": "The environment to refer to this component stack",
+            "Type"       : "String"
+        },
+        "CloudFormationBucket":{
+            "Description": "CloudFormation Bucket ",
+            "Type": "String"
+        },
+        "CloudFormationKey":{
+            "Description": "CloudFormation Key",
+            "Type"       : "String"
+        },
+        "CloudFormationCommonKey":{
+            "Description": "CloudFormation Key",
+            "Type"       : "String",
+            "Default"    : "common/latest"
+        },
+        "BuildVersion": {
+            "Description": "The version of the build",
+            "Type"       : "String"
+        }
+    },
+    "Resources"  : {
+        "ConfigDb": {
+            "Type": "AWS::CloudFormation::Stack",
+            "Properties":{
+                "TemplateURL"  : {"Fn::Sub": ["https://s3-${AWS::Region}.amazonaws.com/${bucket}/${bucketKey}/${version}/cloudformation/dynamic/templates/template-dynamodb.json", {
+                    "bucket"   : {"Ref": "CloudFormationBucket"},
+                    "bucketKey": {"Ref": "ApplicationName"},
+                    "version"  : {"Ref": "BuildVersion"}
+                }]},
+                "Parameters":{
+                },
+                "TimeoutInMinutes": "10"
+            }
+        }
+    },
+    "Outputs": {
+        "AppName"   : { "Value": {"Ref": "ApplicationName"} },
+        "AppEnv"    : { "Value": {"Ref": "DeploymentEnv"  } },
+        "AppVersion": { "Value": {"Ref": "BuildVersion"   } }
+    }
+}
