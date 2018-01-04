@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="ScalaSbtSettings">
-    <option name="customLauncherEnabled" value="true" />
-    <option name="customLauncherPath" value="$PROJECT_DIR$/../../../tools/sbt/bin/sbt-launch.jar" />
-    <option name="customVMPath" value="$PROJECT_DIR$/../../../tools/sbt-0.13/bin" />
-  </component>
-</project>
