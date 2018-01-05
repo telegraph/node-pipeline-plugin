@@ -10,9 +10,10 @@ const AwsStack = require('./lib/aws-stack');
 exports.exec = function (context) {
     let command = context.command;
     let config  = {
-        stackName   : context.appName.replace("-service", ""),
-        stackEnv    : context.appEnv,
-        stackVersion: context.appVersion
+        stackName        : context.appName.replace("-service", ""),
+        stackEnv         : context.appEnv,
+        stackVersion     : context.appVersion,
+        stackCustomParams: context.appParams
     };
     let stack   = new AwsStack(config, false);
 
