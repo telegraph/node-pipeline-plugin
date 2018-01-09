@@ -23,9 +23,11 @@ exports.exec = function (context) {
                 .then(
                     result => {
                         console.info(JSON.stringify(result, null, 4));
+                        process.exit(0)
                     },
                     error  => {
-                        console.error(error)
+                        console.error(error);
+                        process.exit(-1)
                     }
                 )
             ;
@@ -40,9 +42,11 @@ exports.exec = function (context) {
                 .then(
                     () => {
                         console.info("Stack Set up successfully");
+                        process.exit(0);
                     },
                     error  => {
-                        console.error(error)
+                        console.error(error);
+                        process.exit(-1);
                     }
                 )
             ;
@@ -54,9 +58,11 @@ exports.exec = function (context) {
                 .then(
                     () => {
                         console.info("Stack Teared Down");
+                        process.exit(0);
                     },
                     ()  => {
                         console.info("Stack Teared Down");
+                        process.exit(0);
                     }
                 );
             break;
@@ -65,23 +71,13 @@ exports.exec = function (context) {
                 .then(
                     () => {
                         console.info("Stack Published successfully");
+                        process.exit(0);
                     },
                     error  => {
                         console.error(error)
+                        process.exit(-1);
                     }
                 );
             break;
     }
 };
-
-// let stack = ;
-//
-// stack.describe()
-//     .then(
-//         data => {
-//             console.info(JSON.stringify(data, null, 4))
-//         },
-//         error => {
-//             console.error(error)
-//         }
-//     );
