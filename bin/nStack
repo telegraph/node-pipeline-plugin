@@ -64,6 +64,16 @@ const AppCliDescription = {
                             "required": true,
                             "metavar" : "<app-env>"
                         }
+                    },
+                    {
+                        "name" : "--app-region",
+                        "config": {
+                            "help"    : "Application Region value to be used",
+                            "dest"    : "appRegion",
+                            "required": false,
+                            "metavar" : "<app-region>",
+                            "defaultValue" : "eu-west-1"
+                        }
                     }
                 ]
             },
@@ -133,6 +143,16 @@ const AppCliDescription = {
                             "nargs"   : "*",
                             "metavar" : "<app-params>"
                         }
+                    },
+                    {
+                        "name" : "--app-region",
+                        "config": {
+                            "help"    : "Application Region value to be used",
+                            "dest"    : "appRegion",
+                            "required": false,
+                            "metavar" : "<app-region>",
+                            "defaultValue" : "eu-west-1"
+                        }
                     }
                 ]
             },
@@ -173,6 +193,16 @@ const AppCliDescription = {
                             "dest"    : "appEnv",
                             "required": true,
                             "metavar" : "<app-env>"
+                        }
+                    },
+                    {
+                        "name" : "--app-region",
+                        "config": {
+                            "help"    : "Application Region value to be used",
+                            "dest"    : "appRegion",
+                            "required": false,
+                            "metavar" : "<app-region>",
+                            "defaultValue" : "eu-west-1"
                         }
                     }
                 ]
