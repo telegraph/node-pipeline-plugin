@@ -36,8 +36,10 @@ exports.exec = function (context) {
         case 'setup':
             stack.publish()
                 .then( () => stack.describe()
-                    .then ( () => stack.update() )
-                    .catch( () => stack.create() )
+                    .then (
+                        () => stack.update(),
+                        () => stack.create()
+                    )
                 )
                 .then( () => stack.await()  )
                 .then(
