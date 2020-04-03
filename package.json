@@ -30,7 +30,7 @@
   },
   "homepage": "https://github.com/telegraph/node-pipeline-plugin#readme",
   "dependencies": {
-    "argparse": "1.0.9",
+    "argparse": "1.0.10",
     "aws-sdk": "2.175.0",
     "lodash": "4.17.4",
     "recursive-readdir": "^2.2.1"
