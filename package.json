@@ -32,7 +32,7 @@
   "dependencies": {
     "argparse": "1.0.9",
     "aws-sdk": "2.175.0",
-    "lodash": "4.17.4",
+    "lodash": "4.17.19",
     "recursive-readdir": "^2.2.1"
   }
 }
